@@ -4,14 +4,14 @@ require_once("db.php");
 
 class Config {
     private $id;
-    private $categoria_nombre;
+    private $nombre;
     private $descripcion;
     private $imagen;
     private $dbCnx;
 
-    public function __construct($id = 0, $categoria_nombre = "", $descripcion = "", $imagen = "") {
+    public function __construct($id = 0, $nombre = "", $descripcion = "", $imagen = "") {
         $this->id = $id;
-        $this->categoria_nombre = $categoria_nombre;
+        $this->nombre = $nombre;
         $this->descripcion = $descripcion;
         $this->imagen = $imagen;
         $this->dbCnx = new PDO(DB_TYPE . ":host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PWD, [
@@ -28,12 +28,12 @@ class Config {
         return $this->id;
     }
 
-    public function setNombres($categoria_nombre) {
-        $this->categoria_nombre = $categoria_nombre;
+    public function setNombre($nombre) {
+        $this->nombre = $nombre;
     }
 
     public function getNombres() {
-        return $this->categoria_nombre;
+        return $this->nombre;
     }
 
     public function setDescripcion($descripcion) {
@@ -54,8 +54,8 @@ class Config {
 
     public function insertData() {
         try {
-            $stm = $this->dbCnx->prepare("INSERT INTO categorias (CategoriaNombre, Descripcion, imagen) values(?, ?, ?)");
-            $stm->execute([$this->categoria_nombre, $this->descripcion, $this->imagen]);
+            $stm = $this->dbCnx->prepare("INSERT INTO categorias (nombre, Descripcion, imagen) values(?, ?, ?)");
+            $stm->execute([$this->nombre, $this->descripcion, $this->imagen]);
         } catch (Exception $e) {
             return $e->getMessage();
         }
@@ -93,8 +93,8 @@ class Config {
 
     public function update() {
         try {
-            $stm = $this->dbCnx->prepare("UPDATE categorias SET CategoriaNombre = ?, Descripcion = ?, imagen = ? WHERE Categoria_id = ?");
-            $stm->execute([$this->categoria_nombre, $this->descripcion, $this->imagen, $this->id]);
+            $stm = $this->dbCnx->prepare("UPDATE categorias SET nombre = ?, Descripcion = ?, imagen = ? WHERE Categoria_id = ?");
+            $stm->execute([$this->nombre, $this->descripcion, $this->imagen, $this->id]);
         } catch (Exception $e) {
             return $e->getMessage();
         }

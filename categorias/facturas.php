@@ -33,20 +33,40 @@ $imagenes = array_filter($imagenes, function ($item) {
 
 <body>
   <div class="contenedor">
-    <div class="parte-izquierda  bg-danger">
+  <div class="parte-izquierda  bg-danger">
       <div class="perfil">
-        <h3 style="margin-bottom: 2rem;">Camper Facturas.</h3>
+        <h3 style="margin-bottom: 2rem;">Camper Clientes.</h3>
         <img src="images/diseño.png" alt="" class="imagenPerfil">
         <h3>JULIAN VEGA </h3>
       </div>
       <div class="menus">
-        <a href="/Home/home.php" style="display: flex;gap:2px;">
+        <a href="../categorias/facturas.php" style="display: flex;gap:2px;">
           <i class="bi bi-house-door"> </i>
-          <h3 style="margin: 0px;">Home</h3>
+          <h3 style="margin: 0px;">Categorias</h3>
         </a>
-        <a href="estudiantes.php" style="display: flex;gap:1px;">
+        <a href="../clientes/clientes.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Clientes</h3>
+        </a>
+        <a href="../empleados/empleados.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Empleados</h3>
+        </a>
+        <a href="../facturas/categorias.php" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
           <h3 style="margin: 0px;font-weight: 800;">Facturas</h3>
+        </a>
+        <a href="../detalles/detalles.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Detalles</h3>
+        </a>
+        <a href="../productos/productos.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Productos</h3>
+        </a>
+        <a href="../proveedores/proveedores.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Proveedores</h3>
         </a>
       </div>
     </div>
@@ -61,7 +81,7 @@ $imagenes = array_filter($imagenes, function ($item) {
             <tr>
               <th scope="col">#</th>
               <th scope="col">IMAGEN</th>
-              <th scope="col">NOMBRE DE LA CATEGORIA</th>
+              <th scope="col">NOMBRE</th>
               <th scope="col">DESCRIPCION</th>
               <th scope="col">BORRAR</th>
               <th scope="col">DETALLES</th>
@@ -72,7 +92,7 @@ $imagenes = array_filter($imagenes, function ($item) {
               <tr>
                 <td><?php echo $val['Categoria_id']?></td>
                 <td><img src="<?php echo $imagenPath . $val['imagen']; ?>" width="70px" alt=""></td>
-                <td><?php echo $val['CategoriaNombre']?></td>
+                <td><?php echo $val['nombre']?></td>
                 <td><?php echo $val['Descripcion']?></td>
                 <td><a class="btn btn-danger" href="borrarFactura.php?id=<?= $val['Categoria_id']?>&req=delete">Borrar</a></td>
                 <td><a class="btn btn-warning" href="editarFactura.php?id=<?= $val['Categoria_id']?>">Editar</a></td>
@@ -105,9 +125,9 @@ $imagenes = array_filter($imagenes, function ($item) {
 
               <div class="mb-1 col-12">
 
-                <label for="nombres" class="form-label">Nombres Categoria</label>
+                <label for="nombre" class="form-label">Nombre Categoria</label>
 
-                <input type="text" id="nombres" name="nombres" class="form-control" />
+                <input type="text" id="nombre" name="nombre" class="form-control" />
 
               </div>
 

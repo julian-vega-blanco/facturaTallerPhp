@@ -21,12 +21,13 @@ $imagenes = array_filter($imagenes, function ($item) {
 });
 
 if (isset($_POST["editar"])) {
-    $data->setNombres($_POST["nombres"]);
-    $data->setDescripcion($_POST["descripcion"]);
+    $data->setNombre($_POST["nombre"]);
+    $data->setCelular($_POST["celular"]);
+    $data->setDireccion($_POST["direccion"]);
     $data->setImagen($_POST["imagen"]);
 
     $data->update();
-    echo "<script> alert('Se ingreso el usuario');document.location ='facturas.php'</script>";
+    echo "<script> alert('Se ingreso el usuario');document.location ='empleados.php'</script>";
 }
 ?>
 
@@ -49,7 +50,7 @@ if (isset($_POST["editar"])) {
   <div class="contenedor">
     <div class="parte-izquierda">
       <div class="perfil">
-        <h3 style="margin-bottom: 2rem;">Camp Facturas.</h3>
+        <h3 style="margin-bottom: 2rem;">Camp empleado.</h3>
         <img src="images/diseño.png" alt="" class="imagenPerfil">
         <h3>Julian vega</h3>
       </div>
@@ -60,21 +61,26 @@ if (isset($_POST["editar"])) {
         </a>
         <a href="/Estudiantes/Estudiantes.html" style="display: flex;gap:2px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;">Facturas</h3>
+          <h3 style="margin: 0px;">empleado</h3>
         </a>
       </div>
     </div>
     <div class="parte-media" id="cosas">
-      <h2 class="m-2">Factura a Editar</h2>
+      <h2 class="m-2">Empleado a Editar</h2>
       <div class="menuTabla contenedor2">
         <form class="col d-flex flex-wrap" action="" method="post">
           <div class="mb-1 col-12">
-            <label for="nombres" class="form-label">Nombres</label>
-            <input type="text" id="nombres" name="nombres" class="form-control" value="<?php echo $val['CategoriaNombre']; ?>" />
+            <label for="nombre" class="form-label">Nombres</label>
+            <input type="text" id="nombre" name="nombre" class="form-control" value="<?php echo $val['nombre']; ?>" />
           </div>
           <div class="mb-1 col-12">
-            <label for="descripcion" class="form-label">Descripcion</label>
-            <input type="text" id="descripcion" name="descripcion" class="form-control" value="<?php echo $val['Descripcion']; ?>" />
+            <label for="celular" class="form-label">Celular</label>
+            <input type="text" id="celular" name="celular" class="form-control" value="<?php echo $val['celular']; ?>" />
+          </div>
+
+          <div class="mb-1 col-12">
+            <label for="direccion" class="form-label">Direccion</label>
+            <input type="text" id="direccion" name="direccion" class="form-control" value="<?php echo $val['direccion']; ?>" />
           </div>
           <div class="mb-1 col-12">
                 <label for="imagen" class="form-label">Imagen</label>
@@ -92,7 +98,7 @@ if (isset($_POST["editar"])) {
       </div>
     </div>
     <div class="parte-derecho" id="detalles">
-      <h3>Detalle Facturas</h3>
+      <h3>Detalle empleado</h3>
       <p>Cargando...</p>
     </div>
   </div>
